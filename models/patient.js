@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const patientSchema = new mongoose.Schema({
-    fullName: {
+    full_name: {
         type: String,
         required: true,
 
@@ -11,7 +11,7 @@ const patientSchema = new mongoose.Schema({
         required: true,
         index: true
     },
-    patientId: {
+    patient_id: {
         type: String,
         unique: true,
         required: true,
@@ -29,13 +29,17 @@ const patientSchema = new mongoose.Schema({
         enum:["male","female"],
         default:null
     },
-    mobileNumber: {
+    mobile_number: {
         type: String,
     },
     occupation: {
         type: String,
         trim: true,
     },
+    profile_picture: {
+        type: String,
+        default:null
+      },
     addresses: [
         {
             street: {
@@ -60,7 +64,7 @@ const patientSchema = new mongoose.Schema({
             }
         }
     ],
-    prescriptionType: {
+    prescription_type: {
         type: String,
         default: "OPD",
       },
@@ -68,7 +72,7 @@ const patientSchema = new mongoose.Schema({
         type:String,
         default:null
       },
-      paymentStatus: {
+      payment_status: {
         type: String,
       },
 },
