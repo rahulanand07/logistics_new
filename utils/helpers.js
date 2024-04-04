@@ -3,7 +3,7 @@ import { SECRET_KEY } from "./constant.js";
 
 const send_token = async(res, user, statusCode) => {
     let payload = {
-      id: user.id,
+      id: user._id,
       email: user.email,
     };
     const token = jwt.sign(payload, `${SECRET_KEY}`);
