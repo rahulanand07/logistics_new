@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import {router as patient} from "./router/patient_router.js"
+import {router as user} from "./router/user_router.js"
 import db_connect from "./db/connection.js"
 
 const app = express()
@@ -25,7 +26,8 @@ db_connect()
 
 
 //Route imports
-app.use("/patient",patient)
+app.use("/api/v1/patient",patient)
+app.use("/api/v1/user",user)
 
 
 export default app
