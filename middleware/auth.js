@@ -39,3 +39,7 @@ const authenticate_token = async(req,res,next)=>{
         next()
     })
 }
+
+export {
+    authenticate_token
+}
