@@ -1,14 +1,14 @@
 import jwt from "jsonwebtoken";
 
-import { SECRET_KEY } from "../utils/constant";
-import User from "../models/user";
+import { SECRET_KEY } from "../utils/constant.js";
+import User from "../models/user.js";
 
 
 const authenticate_token = async(req,res,next)=>{
-    let token = req.headers["authorization"]
+    let token = req.header("X-ACCESS-TOKEN")
 
-    if(req.headers.authorization && req.headers.authorization.split(" ")[0]==="Bearer"){
-        token = req.headers.authorization.split(" ")[1]
+    if(req.header("X-ACCESS-TOKEN") && req.header("X-ACCESS-TOKEN").split(" ")[0]==="Bearer"){
+        token = req.header("X-ACCESS-TOKEN").split(" ")[1]
     }
 
     if(!token){
@@ -38,4 +38,22 @@ const authenticate_token = async(req,res,next)=>{
         req.user = user
         next()
     })
+}
+
+const role_auth = (roles) => {
+    return (req, res, next) => {
+        // console.log(req.user?.role,"-----")
+      let role=req.user?.role
+      if (!roles.includes(role)) {
+        return res.status(400).json({
+            status:false,
+            message:`Role ${role} does not have access`
+        })
+      }
+      next();
+    };
+  };
+
+export {
+    authenticate_token, role_auth
 }

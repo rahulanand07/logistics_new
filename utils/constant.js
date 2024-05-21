@@ -20,6 +20,11 @@ const PENDINGSTATUS = "PENDING"
 const TRANSFERRED = "TRANSFERRED"
 const DONESTATUS = "DONE"
 const WORKTYPE = ["DURGS", "INJECTABLES", "BLOOD TEST" ,"RADIOLOGY"]
+const USER_ROLES = {
+    ADMIN:"admin",
+    MANAGER:"manager",
+    MEDICAL_STAFF:"medical_staff"
+}
 export {
     SECRET_KEY,
     CRONJOB,
@@ -31,4 +36,5 @@ export {
     TRANSFERRED,
     DONESTATUS,
     WORKTYPE,
+    USER_ROLES
 }
