@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
       },
       role:{
         type:String,
-        enum:["admin","manager","medical_staff"]
+        enum:["admin","manager","medical_staff"],
+        required:true
       },
       email_verification:{
         type: Number,

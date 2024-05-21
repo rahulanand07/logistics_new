@@ -4,12 +4,10 @@ import { send_token } from "../utils/helpers.js"
 
 const register = async(req,res)=>{
     try {
-        let {name,email,password} = req.body
+        // let {name,email,password} = req.body
 
         let user_obj = {
-            name,
-            email,
-            password
+            ...req.body
         }
 
         let new_user = new User(user_obj)
