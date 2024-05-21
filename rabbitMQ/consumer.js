@@ -2,9 +2,9 @@ const amqp = require('amqplib')
 // const { WORKTYPE } = require('../utils/constant')
 // const { Patient } = require('../modules/patients/patientModel')
 // const PatientTasks = require('../modules/patients/patientTasks')
-// const rabbitMqUsername = process.env.GAURA_RABBITMQ_USERNAME
-// const rabbitMqPassword = process.env.GAURA_RABBITMQ_PASSWORD
-// const rabbitMqUrl = process.env.RABBITMQ_URL
+const rabbitMqUsername = process.env.GAURA_RABBITMQ_USERNAME
+const rabbitMqPassword = process.env.GAURA_RABBITMQ_PASSWORD
+const rabbitMqUrl = process.env.RABBITMQ_URL
 
 //Server URL from where we want to listen from
 const url = `amqp://${rabbitMqUsername}:${rabbitMqPassword}@${rabbitMqUrl}/`  // Gaura Life
@@ -39,7 +39,7 @@ async function consumeMessages() {
         const data = JSON.parse(msg.content)
         console.log(data, '------')
 
-        let existingPatient = await Patient.findOne({ patientId: data.patient_id })
+        let existingPatient = await Patient.findOne({ patient_id: data.patient_id })
         if (existingPatient) {
           for (let workType in data.tasks) {
             let taskObj = {

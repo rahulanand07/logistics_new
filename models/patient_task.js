@@ -45,26 +45,28 @@ const patient_task_schema = new mongoose.Schema(
             type:String,
             default:null
         },
-        street: {
-            type: String,
-            trim: true
-        },
-        city: {
-            type: String,
-            trim: true
-        },
-        state: {
-            type: String,
-            trim: true
-        },
-        country: {
-            type: String,
-            trim: true
-        },
-        postalCode: {
-            type: String,
-            trim: true
-        }
+        assigned_address: {
+                street: {
+                    type: String,
+                    trim: true
+                },
+                city: {
+                    type: String,
+                    trim: true
+                },
+                state: {
+                    type: String,
+                    trim: true
+                },
+                country: {
+                    type: String,
+                    trim: true
+                },
+                postalCode: {
+                    type: String,
+                    trim: true
+                }
+            }
              
     },
     { timestamps: true })

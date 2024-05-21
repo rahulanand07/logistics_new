@@ -5,10 +5,10 @@ import User from "../models/user";
 
 
 const authenticate_token = async(req,res,next)=>{
-    let token = req.headers["authorization"]
+    let token = req.headers["X-ACCESS-TOKEN"]
 
-    if(req.headers.authorization && req.headers.authorization.split(" ")[0]==="Bearer"){
-        token = req.headers.authorization.split(" ")[1]
+    if(req.headers["X-ACCESS-TOKEN"] && req.headers["X-ACCESS-TOKEN"].split(" ")[0]==="Bearer"){
+        token = req.headers["X-ACCESS-TOKEN"].split(" ")[1]
     }
 
     if(!token){
